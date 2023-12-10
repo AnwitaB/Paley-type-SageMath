@@ -1,0 +1,16 @@
+def Paleytype(n):
+    A = Integers(n)
+    Aunits = A.unit_group()
+    Asq = [x^2 for x in Aunits]
+    G=Graph([A, lambda i,j: (i-j) in Asq])
+    return G
+    
+
+def main():
+    print("Enter the order of graph")
+    n=int(input())
+    G=Paleytype(n)
+    print("In the polynomial below, the coefficient of t^3 gives the number of triangles, and the coefficient of t^4 gives the number of cliques of order four.")
+    print(G.clique_polynomial())
+    
+main()
